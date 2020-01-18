@@ -5,7 +5,8 @@ import './App.css';
 class App extends Component {
   state = {
     myGitData: [],
-    followerData: []
+    followerData: [],
+    userData: []
   }
 
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
         console.log('RF: fetch > Follower Data: ', followerData)
         this.setState({...this.state, followerData: followerData})
       })
+      .catch(err => console.log('RF: Error in Follower Fetch: ', err))
   }
 
   render () {
@@ -31,12 +33,12 @@ class App extends Component {
         <header className='header'>
           <h1>Github User Cards</h1>
         </header>
-        <UserCard user={this.state.myGitData}/>
-        {this.state.followerData.map((gitUser, index) => {
-          return (
-            <UserCard user={gitUser} key={index}/>
-          )
-        })}
+        <div className='card-container'>
+          <UserCard user={this.state.myGitData}/>
+          {this.state.followerData.map((gitUser, index) => {
+            return <UserCard user={gitUser} key={index}/>
+          })}
+        </div>
       </div>
     );
   }

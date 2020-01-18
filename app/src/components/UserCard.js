@@ -13,7 +13,7 @@ const UserCard = (props) => {
                 <p><strong>Following:</strong> {props.user.following}</p>
             </div>
             <button className='git-btn'>
-                <a href={props.user.html_url}>Github</a>
+                <a href={props.user.html_url} target='_blank'>Github</a>
             </button>
         </div>
     )
